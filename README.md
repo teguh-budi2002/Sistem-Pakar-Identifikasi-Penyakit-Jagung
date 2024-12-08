@@ -1,4 +1,4 @@
-<p align="center"><img src="https://ibb.co.com/VLs5C9K" /></p>
+<p align="center"><img src="https://ibb.co.com/VLs5C9K" ></p>
 
 ## Sistem Pakar JagungQu
 
