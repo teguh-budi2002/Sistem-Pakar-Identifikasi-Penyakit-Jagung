@@ -1,4 +1,4 @@
-<a href="https://ibb.co.com/VLs5C9K"><img src="https://i.ibb.co.com/VLs5C9K/image.png" alt="image" border="0" /></a>
+<p align="center"><img src="https://i.ibb.co.com/VLs5C9K/image.png" alt="image" border="0" width="500" /></p>
 
 ## Sistem Pakar JagungQu
 
