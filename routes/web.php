@@ -18,6 +18,8 @@ Route::get('login', [LoginController::class, 'index'])->name('login.index');
 Route::post('login', [LoginController::class, 'login'])->name('login.process');
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
+Route::get('informasi-penyakit/{jenisPenyakit}', [HomeController::class, 'informationDesease'])->name('info.desease');
+
 Route::middleware('auth')->group(function () {
     Route::get('diagnosa-penyakit', [DiagnoseController::class, 'index'])->name('diagnose.index');
     Route::post('diagnosa-penyakit/process', [DiagnoseController::class, 'diagnose'])->name('diagnose.process');

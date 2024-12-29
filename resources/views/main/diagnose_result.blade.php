@@ -35,6 +35,7 @@
       <div class="solusi_penyakit mt-4">
         <p>Solusi Mengatasi <span class="font-semibold">Penyakit {{ $penyakit_result }}</span> :</p>
         <p class="text-sm leading- mt-2">{{ $solusi }}</p>
+        <p class="mt-4">Informasi Lengkap Mengenai <a href="{{ route('info.desease', ['jenisPenyakit' => strtolower(str_replace(" ", "", $penyakit_result))]) }}" class="text-blue-500 hover:text-blue-400">{{ $penyakit_result }}</a></p>
       </div>
       <div class="mt-5">
         <a href="{{ route('diagnose.history', ['username' => Auth::user()->username]) }}" class="w-fit p-2 rounded-md bg-sky-500 hover:bg-sky-600 text-white flex items-center space-x-2">
