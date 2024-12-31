@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CanAccessDashboardMiddleware
+class EnsureUserIsAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -17,14 +17,9 @@ class CanAccessDashboardMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('login.index')->with('login-first', 'Silahkan Login Terlebih Dahulu.');
-        } else
-
-        if (Auth::check() && auth()->user()->role->role_name !== 'Admin') {
-            return redirect()->route('home')->with('only-admin-can-access-dashboard', 'Hanya Admin yang boleh mengakses dashboard.');
-        } else {
-            return $next($request);
+            return redirect()->route('login.index')->with('login-first', 'Silahkan Login Tterlebih Dahulu.');
         }
-        
+
+        return $next($request);
     }
 }

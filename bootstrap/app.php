@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'canAccessDashboard' => \App\Http\Middleware\CanAccessDashboardMiddleware::class,
+            'ensureUserIsAuthenticated' => \App\Http\Middleware\EnsureUserIsAuthenticated::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
