@@ -19,6 +19,7 @@ Route::post('login', [LoginController::class, 'login'])->name('login.process');
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('informasi-penyakit/{jenisPenyakit}', [HomeController::class, 'informationDesease'])->name('info.desease');
+Route::get('tentang-kami', [HomeController::class, 'aboutUs'])->name('about.us');
 
 Route::middleware('ensureUserIsAuthenticated')->group(function () {
     Route::get('diagnosa-penyakit', [DiagnoseController::class, 'index'])->name('diagnose.index');

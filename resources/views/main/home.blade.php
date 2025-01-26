@@ -39,10 +39,21 @@
 <div class="welcome_section w-full h-[500px]">
   <div class="h-full flex justify-center items-center">
     <div class="absolute top-12 m-auto max-w-3xl h-[250px] blur-[130px] inset-0" style="background: linear-gradient(108.49deg, rgba(158, 52, 251, 0.24) 23.1%, rgba(46, 63, 248, 0.341) 72.53%);"></div>
-    <div class="w-1/2 relative">
-      <div class="welcome_text text-center space-y-3">
-        <p class="text-5xl font-extrabold capitalize text-slate-700"><span class="bg-gradient-to-r from-violet-500 to-rose-500 bg-clip-text text-transparent">Identifikasi penyakit jagung</span> anda dalam hitungan singkat.</p>
-        <p class="text-sm text-slate-500">Temukan informasi tentang penyakit tanaman jagung secara cepat dan akurat, serta dapatkan solusi terbaik untuk setiap masalah yang anda hadapi.</p>
+    <div class="md:w-1/2 w-10/12">
+      <div class="welcome_text text-center">
+        <img src="{{ asset('images/jagung_mobile_main_page.png') }}" class="w-32 h-auto mx-auto md:hidden block" alt="img jagung">
+        <div class="flex justify-center items-center md:text-5xl text-2xl font-extrabold text-slate-700 bg-gradient-to-r from-violet-500 to-rose-500 bg-clip-text text-transparent space-x-2">
+          <p class="capitalize">Identifikasi penyakit <span class="md:hidden inline-block">Jagung</span></p>
+          <div class="md:flex md:items-center hidden">
+            <p>Ja</p>
+            <img src="{{ asset('images/jagung_main_page.png') }}" class="w-20 h-auto -mr-5 -ml-5" alt="img jagung">
+            <p>ung</p>
+          </div>
+        </div>
+        <p class="md:text-5xl text-2xl font-extrabold capitalize text-slate-700">
+        anda dalam hitungan singkat.
+        </p>
+        <p class="md:text-sm text-xs text-slate-500 mt-2">Temukan informasi tentang penyakit tanaman jagung secara cepat dan akurat, serta dapatkan solusi terbaik untuk setiap masalah yang anda hadapi.</p>
       </div>
       <div class="welcome_btn flex justify-center mt-5">
         @if (Auth::check())
@@ -53,37 +64,39 @@
           </svg>
         </a>
         @else
-        <div x-data="{ isOpen: false }">
+        <div x-data="{ isOpen: false }" class="z-50">
           <button type="button" @click="isOpen = true" class="w-max p-2 px-4 flex items-center space-x-1 rounded-full bg-blue-700 hover:bg-blue-500 transition-colors duration-100 ease-in-out">
             <span class="text-white text-sm">Diagnosa Sekarang</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
           </button>
-          <div class="fixed inset-0 w-full h-full" x-show="isOpen" x-transition>
-              <div class="fixed inset-0 w-full h-full bg-black opacity-40"></div>
-              <div class="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-4 w-full max-w-lg">
-                  <div class="bg-white rounded-md shadow-lg px-4 py-6">
-                      <div class="flex items-center justify-center flex-none w-16 h-16 mx-auto bg-red-100 rounded-full">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-rose-600">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-                          </svg>
-                      </div>
-                      <div class="mt-2 text-center sm:ml-4 sm:text-left">
-                          <p class="text-2xl text-center font-medium text-rose-600 uppercase">Anda Belum Login</p>
-                          <p class="mt-2 text-sm leading-relaxed text-gray-500">Akses terbatas, silakan login terlebih dahulu untuk mengakses fitur.</p>
-                          <div class="items-center gap-2 mt-3 text-sm sm:flex">
-                              <a href="{{ route('login.index') }}" class="w-full mt-2 p-2.5 text-white text-center bg-slate-800 hover:bg-slate-700 rounded-md">
-                                  Login
-                              </a>
-                              <button type="button" aria-label="Close" @click="isOpen = false" class="w-full mt-2 p-2.5 bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-md border">
-                                  Tutup
-                              </button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          <template x-if="isOpen">
+            <div class="fixed inset-0 w-full h-full">
+                <div class="fixed inset-0 w-full h-full bg-black opacity-40"></div>
+                <div class="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-4 w-full max-w-lg">
+                    <div class="bg-white rounded-md shadow-lg px-4 py-6">
+                        <div class="flex items-center justify-center flex-none w-16 h-16 mx-auto bg-red-100 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-rose-600">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <div class="mt-2 text-center sm:ml-4 sm:text-left">
+                            <p class="text-2xl text-center font-medium text-rose-600 uppercase">Anda Belum Login</p>
+                            <p class="mt-2 text-sm leading-relaxed text-gray-500">Akses terbatas, silakan login terlebih dahulu untuk mengakses fitur.</p>
+                            <div class="items-center gap-2 mt-3 text-sm flex">
+                                <a href="{{ route('login.index') }}" class="w-full mt-2 p-2.5 text-white text-center bg-slate-800 hover:bg-slate-700 rounded-md">
+                                    Login
+                                </a>
+                                <button type="button" aria-label="Close" @click="isOpen = false" class="w-full mt-2 p-2.5 bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-md border">
+                                    Tutup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </template>
         </div>
         @endif
       </div>

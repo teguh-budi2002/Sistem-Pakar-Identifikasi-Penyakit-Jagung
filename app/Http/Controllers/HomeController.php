@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penyakit;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,55 +13,52 @@ class HomeController extends Controller
 
     public function informationDesease($jenisPenyakit) {
         $dataToParse = [];
+        $formattedJenisPenyakit = ucwords(str_replace('-', ' ', $jenisPenyakit));
+        $getDescriptionPenyakit = Penyakit::select('id', 'nama_penyakit', 'deskripsi')->where('nama_penyakit', $formattedJenisPenyakit)->first();
 
-        switch ($jenisPenyakit) {
-            case 'bulai':
+        switch ($formattedJenisPenyakit) {
+            case 'Bulai':
                 $dataToParse = [
                     'name_of_penyakit' => 'Bulai',
                     'img_penyakit' => 'bulai.jpeg',
                     'img_source' => 'https://distan.bulelengkab.go.id/informasi/detail/artikel/mengendalikan-penyakit-bulai-pada-tanaman-jagung-64',
-                    'description' => 'Penyakit bulai pada tanaman jagung, yang juga dikenal dengan istilah downy mildew, merupakan penyakit yang disebabkan oleh infeksi jamur dari genus Peronosclerospora. Penyakit ini menjadi ancaman serius bagi produksi jagung karena dapat menyebabkan kerugian besar, terutama jika serangan terjadi pada tahap awal pertumbuhan tanaman. Gejala utama penyakit bulai ditandai dengan munculnya garis-garis kuning atau belang-belang berwarna pucat pada daun jagung. Warna pucat ini biasanya memanjang sejajar dengan tulang daun, yang menunjukkan adanya klorosis akibat gangguan proses fotosintesis. Di sisi bawah daun, sering kali terlihat lapisan putih seperti tepung, yang sebenarnya adalah kumpulan spora jamur. Spora ini merupakan bagian dari siklus hidup jamur yang berperan dalam penyebaran penyakit ke tanaman lain. Tanaman yang terinfeksi bulai sering mengalami pertumbuhan yang abnormal, seperti kerdil atau pertumbuhan yang lambat. Dalam kasus yang parah, tanaman tidak mampu membentuk tongkol jagung, atau jika tongkol terbentuk, ukurannya kecil dan tidak produktif. Jika infeksi terjadi secara masif, terutama di lingkungan yang mendukung seperti kelembapan tinggi dan suhu hangat, tanaman bisa mati sebelum mencapai fase generatif. Penyebaran penyakit bulai terjadi melalui spora jamur yang terbawa angin, air, atau alat pertanian yang tidak steril. Benih yang terinfeksi juga menjadi sumber utama penyebaran penyakit ini. Dengan demikian, tanaman jagung di lahan yang sudah terkontaminasi memiliki risiko tinggi terkena serangan bulai, terutama jika tidak ada tindakan pencegahan yang dilakukan.
-
-                    Untuk mengendalikan penyakit ini, langkah utama adalah dengan menggunakan varietas jagung yang tahan terhadap bulai. Selain itu, rotasi tanaman dengan jenis tanaman lain yang tidak menjadi inang jamur bulai dapat membantu memutus siklus hidup patogen. Penggunaan benih yang sehat dan bebas dari kontaminasi penyakit juga sangat penting untuk mencegah penyebaran. Di sisi lain, penggunaan fungisida secara tepat, baik sebagai tindakan pencegahan maupun pengobatan, dapat mengurangi tingkat keparahan penyakit. Kebersihan lahan, seperti menghilangkan sisa-sisa tanaman yang terinfeksi, juga merupakan langkah penting dalam mencegah penyebaran penyakit bulai. Dengan penanganan yang tepat dan penerapan praktik pertanian yang baik, serangan penyakit bulai dapat diminimalkan, sehingga tanaman jagung dapat tumbuh optimal dan menghasilkan panen yang memuaskan.',
+                    'description' => $getDescriptionPenyakit->deskripsi,
                 ];
                 break;
 
-            case 'hawardaun':
+            case 'Hawar Daun':
                 $dataToParse = [
                     'name_of_penyakit' => 'Hawar Daun',
                     'img_penyakit' => 'hawar-daun.webp',
                     'img_source' => 'https://www.kampustani.com/cara-mengatasi-hawar-daun-pada-tanaman-jagung/',
-                    'description' => 'Hawar daun pada tanaman jagung adalah penyakit yang disebabkan oleh infeksi jamur dari genus Exserohilum, khususnya spesies Exserohilum turcicum. Penyakit ini menjadi salah satu ancaman utama dalam budidaya jagung karena dapat menyebabkan penurunan hasil panen yang signifikan. Gejala hawar daun biasanya mulai terlihat pada daun tanaman jagung, dengan munculnya bercak-bercak yang berbentuk lonjong atau elips. Bercak ini awalnya berwarna hijau keabu-abuan dan lama kelamaan berubah menjadi cokelat tua dengan tepi kuning. Penyakit hawar daun sering kali berkembang dengan cepat, terutama dalam kondisi lingkungan yang mendukung, seperti kelembapan tinggi, suhu hangat, dan curah hujan yang sering. Bercak-bercak tersebut dapat menyatu, sehingga menyebabkan kerusakan yang lebih luas pada daun. Jika infeksi sudah parah, daun tanaman bisa mengering dan mati sebelum waktunya, mengganggu proses fotosintesis yang sangat penting untuk pertumbuhan dan pembentukan tongkol jagung.
-
-                    Infeksi hawar daun biasanya dimulai dari daun-daun bagian bawah dan kemudian menyebar ke bagian atas tanaman. Penyebaran patogen ini terutama terjadi melalui spora jamur yang terbawa angin atau percikan air hujan. Selain itu, sisa-sisa tanaman yang terinfeksi di musim sebelumnya dapat menjadi sumber inokulum untuk musim tanam berikutnya, sehingga memperbesar risiko penyebaran penyakit di lahan yang sama. Dampak dari hawar daun sangat tergantung pada tingkat keparahan dan waktu terjadinya infeksi. Jika serangan terjadi pada fase awal pertumbuhan, kerugian hasil panen bisa mencapai 40–70%, karena tanaman tidak dapat menghasilkan tongkol jagung yang optimal. Pada infeksi ringan atau yang terjadi menjelang akhir fase pertumbuhan, kerugian cenderung lebih kecil, tetapi kualitas tongkol jagung tetap dapat menurun.
-
-                    Pengendalian hawar daun pada tanaman jagung membutuhkan pendekatan terpadu. Penggunaan varietas jagung yang tahan terhadap hawar daun merupakan langkah pencegahan yang efektif. Selain itu, praktik rotasi tanaman dengan jenis yang bukan inang jamur dapat memutus siklus hidup patogen. Pengelolaan sisa-sisa tanaman dengan cara membenamkan atau membakar residu yang terinfeksi juga dapat mengurangi sumber inokulum. Jika diperlukan, penggunaan fungisida dapat dilakukan, terutama pada fase awal pertumbuhan ketika gejala pertama kali muncul. Namun, penggunaannya harus sesuai dosis dan jadwal yang dianjurkan untuk menghindari resistensi patogen. Melalui penerapan manajemen pertanian yang baik dan tindakan pencegahan yang efektif, dampak penyakit hawar daun pada tanaman jagung dapat diminimalkan, sehingga hasil panen tetap optimal dan berkelanjutan.',
+                    'description' => $getDescriptionPenyakit->deskripsi,
                 ];
                 break;
 
-            case 'busukpelepah':
+            case 'Busuk Pelepah':
                 $dataToParse = [
                     'name_of_penyakit' => 'Busuk Pelepah',
                     'img_penyakit' => 'busuk-pelepah.jpg',
                     'img_source' => 'https://plantix.net/id/library/plant-diseases/300035/bacterial-stalk-rot-of-maize/',
-                    'description' => 'Penyakit busuk pelepah pada tanaman jagung adalah salah satu penyakit yang disebabkan oleh infeksi jamur, khususnya Rhizoctonia solani. Penyakit ini sering menyerang bagian pelepah daun jagung dan dapat menyebar ke bagian batang, terutama di lingkungan dengan kelembapan tinggi dan drainase yang buruk. Penyakit ini merupakan ancaman serius bagi produktivitas tanaman jagung karena dapat menghambat pertumbuhan, menurunkan kualitas hasil panen, dan bahkan menyebabkan kematian tanaman dalam kasus yang parah.
-
-                    Gejala awal penyakit busuk pelepah biasanya berupa bercak kecil berwarna cokelat tua atau hitam pada pelepah daun. Bercak ini sering kali berbentuk tidak teratur dan cenderung meluas seiring waktu. Ketika infeksi semakin berkembang, bercak-bercak ini menyatu, menyebabkan pelepah daun membusuk dan menjadi rapuh. Dalam kondisi yang lembap, sering terlihat lapisan seperti jaring putih atau cokelat muda di permukaan bercak, yang merupakan miselium jamur. Selain itu, bagian yang terinfeksi sering kali mengeluarkan bau tidak sedap akibat proses pembusukan. Infeksi yang parah dapat melemahkan struktur tanaman, sehingga tanaman menjadi mudah roboh, terutama jika terkena angin kencang atau hujan deras. Proses ini dikenal sebagai "lodging" dan dapat mengurangi hasil panen secara signifikan. Tanaman yang terinfeksi juga sering mengalami gangguan dalam proses pengangkutan nutrisi dan air, yang mengakibatkan pertumbuhan yang terhambat dan pembentukan tongkol jagung yang tidak optimal. Penyakit busuk pelepah biasanya menyebar melalui tanah yang sudah terkontaminasi jamur atau melalui sisa-sisa tanaman yang terinfeksi di musim sebelumnya. Spora jamur dapat bertahan di tanah dalam waktu lama dan akan menginfeksi tanaman ketika kondisi lingkungan mendukung, seperti kelembapan yang tinggi, suhu hangat, dan ventilasi udara yang buruk di sekitar tanaman. Drainase lahan yang buruk juga menjadi faktor utama yang memicu perkembangan penyakit ini, karena genangan air meningkatkan kelembapan yang diperlukan oleh jamur untuk tumbuh.
-
-                    Upaya pengendalian penyakit busuk pelepah memerlukan pendekatan terpadu. Penggunaan varietas jagung yang memiliki ketahanan terhadap jamur Rhizoctonia solani adalah langkah pencegahan yang paling efektif. Pengelolaan lahan yang baik, seperti memastikan drainase yang optimal dan mengurangi genangan air, juga sangat penting untuk mencegah penyebaran penyakit. Selain itu, rotasi tanaman dengan jenis tanaman yang tidak menjadi inang jamur dapat membantu memutus siklus hidup patogen. Pada kasus infeksi ringan hingga sedang, penggunaan fungisida dapat menjadi solusi yang efektif jika diterapkan secara tepat waktu dan sesuai dosis. Namun, penggunaan fungisida harus diiringi dengan praktik pengelolaan lingkungan yang baik agar hasilnya maksimal. Membersihkan sisa-sisa tanaman setelah panen dengan cara membakar atau membenamkannya ke dalam tanah juga dapat mengurangi risiko penyebaran penyakit di musim tanam berikutnya. Dengan kombinasi tindakan pencegahan, pengelolaan lingkungan yang baik, dan intervensi yang tepat, dampak penyakit busuk pelepah pada tanaman jagung dapat diminimalkan, sehingga tanaman dapat tumbuh sehat dan menghasilkan panen yang optimal.',
+                    'description' => $getDescriptionPenyakit->deskripsi,
                 ];
                 break;
 
-            case 'penyakitgosong':
+            case 'Karat Daun':
+                $dataToParse = [
+                    'name_of_penyakit' => 'Karat Daun',
+                    'img_penyakit' => 'karat-daun.jpg',
+                    'img_source' => 'https://agri.kompas.com/image/2023/01/18/170637084/gejala-dan-cara-mengendalikan-penyakit-karat-pada-jagung?page=2',
+                    'description' => $getDescriptionPenyakit->deskripsi,
+                ];
+                break;
+
+            case 'Penyakit Gosong':
                 $dataToParse = [
                     'name_of_penyakit' => 'Penyakit Gosong',
                     'img_penyakit' => 'gosong.jpg',
                     'img_source' => 'https://www.dgwfertilizer.co.id/10-hama-dan-penyakit-penting-tanaman-jagung-serta-pengendaliannya/',
-                    'description' => 'Penyakit gosong pada tanaman jagung, yang dikenal sebagai corn smut, disebabkan oleh jamur Ustilago maydis. Penyakit ini ditandai dengan munculnya benjolan-benjolan besar berwarna putih keabu-abuan pada bagian tanaman seperti tongkol, daun, batang, atau bahkan akar. Benjolan ini disebut dengan "gall" atau "tumor," yang merupakan tempat berkembang biaknya spora jamur. Seiring waktu, benjolan ini akan berubah menjadi hitam dan kering, meninggalkan massa spora gelap yang mudah tersebar. Infeksi biasanya dimulai ketika spora jamur, yang dapat bertahan di tanah, sisa-sisa tanaman, atau terbawa angin, menempel pada jaringan muda atau luka kecil di tanaman jagung. Spora ini membutuhkan kelembapan dan suhu yang hangat untuk berkecambah dan menginfeksi jaringan tanaman. Setelah infeksi, jaringan tanaman yang terkena mengalami pembengkakan yang terlihat seperti tumor, di mana jamur tumbuh dan menghasilkan spora.
-
-                    Gejala utama penyakit gosong adalah munculnya benjolan abnormal yang mengganggu pertumbuhan dan perkembangan tanaman. Pada tongkol jagung, infeksi sering menyebabkan pembentukan biji yang tidak normal, di mana biji jagung digantikan oleh massa spora hitam. Pada kasus yang parah, infeksi dapat menghambat pembentukan tongkol sama sekali, sehingga mengurangi produktivitas tanaman. Di bagian lain tanaman seperti daun atau batang, infeksi dapat melemahkan struktur tanaman dan mengurangi efisiensi fotosintesis. Penyakit ini lebih sering terjadi di daerah dengan kelembapan tinggi dan suhu hangat, serta di tanaman yang mengalami stres akibat kekeringan, kekurangan nutrisi, atau kerusakan fisik. Jamur Ustilago maydis juga lebih mudah menginfeksi tanaman yang terluka akibat serangga atau alat pertanian. Sisa-sisa tanaman yang terinfeksi pada musim sebelumnya dapat menjadi sumber utama penyebaran penyakit di musim tanam berikutnya.
-
-                    Untuk mengatasi penyakit gosong, pencegahan menjadi langkah yang paling efektif. Penggunaan varietas jagung yang tahan terhadap Ustilago maydis adalah salah satu cara terbaik untuk mengurangi risiko infeksi. Selain itu, pengelolaan tanaman yang baik, seperti menjaga kebersihan lahan, meminimalkan luka pada tanaman, dan menerapkan rotasi tanaman, dapat membantu mengurangi peluang penyebaran spora jamur. Menghilangkan tanaman yang terinfeksi sedini mungkin juga penting untuk mencegah spora jamur menyebar ke tanaman lain. Secara umum, penyakit gosong jarang menyebabkan kerugian besar pada skala budidaya yang luas, tetapi dapat menjadi masalah serius jika tidak dikelola dengan baik. Dengan pengelolaan yang tepat dan penerapan praktik pertanian yang baik, dampak penyakit gosong dapat diminimalkan, sehingga tanaman jagung dapat tumbuh sehat dan menghasilkan panen yang optimal.',
+                    'description' => $getDescriptionPenyakit->deskripsi,
                 ];
                 break;
         }
@@ -68,5 +66,9 @@ class HomeController extends Controller
         return view('main.information-desease', [
             'data' => $dataToParse
         ]);
+    }
+
+    public function aboutUs() {
+        return view('main.about-us');
     }
 }

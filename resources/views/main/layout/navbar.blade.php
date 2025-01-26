@@ -1,15 +1,15 @@
-<nav class="w-full flex items-center justify-between p-4 border-b border-slate-200">
+<nav class="w-full flex items-center justify-between md:p-4 py-4 px-2 border-b border-slate-200">
   <div class="logo">
     <img src="{{ asset('images/logo/LOGO_Only.png') }}" class="w-16 h-16" alt="logo web">
   </div>
-  <div class="w-full flex items-center justify-between">
-    <div class="menu">
-      <ul class="flex items-center space-x-8">
+  <div class="w-full flex items-center justify-between" x-data="{ isOpen: false }">
+    <div class="menu_desktop ">
+      <ul class="flex items-center md:space-x-8 space-x-5">
         <li><a href="{{ route('home') }}" class="text-sm hover:text-slate-700 {{ Request::is('/') ? 'text-slate-700' : 'text-slate-400' }}">Beranda</a></li>
         @if (Auth::check())
         <li><a href="{{ route('diagnose.index') }}" class="text-sm hover:text-slate-700 {{ Request::is('diagnosa-penyakit') ? 'text-slate-700' : 'text-slate-400' }}">Diagnosa Penyakit</a></li>
         @endif
-        <li><a href="" class="text-slate-400 text-sm hover:text-slate-700">Tentang Kami</a></li>
+        <li><a href="{{ route('about.us') }}" class="text-slate-400 text-sm hover:text-slate-700">Tentang Kami</a></li>
       </ul>
     </div>
     <div class="button_login_register flex items-center justify-end space-x-3">
@@ -29,14 +29,17 @@
           <div class="ring-1 ring-slate-200 bg-white w-40">
             <ul>
               <li>
-                <a href="{{ route('diagnose.history', ['username' => Auth::user()->username]) }}" class="block py-2 px-4 hover:bg-gray-100">Riwayat Diagnosa</a>
+                <a href="{{ route('diagnose.history', ['username' => Auth::user()->username]) }}" class="block py-2 px-4 hover:bg-gray-100 whitespace-nowrap">Riwayat Diagnosa</a>
+              </li>
+              <li>
+                <button type="button" @click="isOpen = true" class="md:hidden w-full block py-2 px-4 hover:bg-gray-100 text-left">Logout</button>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div x-data="{ isOpen: false }">
-        <button type="button" @click="isOpen = true" class="w-max p-2 px-4 flex items-center space-x-1 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors duration-100 ease-in-out">
+      <div>
+        <button type="button" @click="isOpen = true" class="w-max p-2 px-4 md:flex items-center space-x-1 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors duration-100 ease-in-out hidden">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
           </svg>

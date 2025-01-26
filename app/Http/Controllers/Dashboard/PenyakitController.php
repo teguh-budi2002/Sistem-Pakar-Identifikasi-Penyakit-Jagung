@@ -72,10 +72,10 @@ class PenyakitController extends Controller
     }
 
     public function deletePenyakit($penyakitId) {
-        $penyakit = Penyakit::find($penyakitId);
-        $penyakit->delete();
+        // $penyakit = Penyakit::find($penyakitId);
+        // $penyakit->delete();
 
-        return redirect()->route('dashboard.penyakit')->with('success-delete-penyakit', 'Penyakit Berhasil Dihapus.');
+        return redirect()->route('dashboard.penyakit')->with('success-delete-penyakit', 'Penyakit Tidak Boleh Dihapus.');
     }
 
     public function addPenyakitSolution($penyakitId) {

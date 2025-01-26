@@ -2,7 +2,7 @@
 @section('title', 'Riwayat Diagnosa Penyakit')
 @section('content')
 <div class="flex justify-center">
-  <div class="w-10/12 mt-12">
+  <div class="md:w-10/12 w-11/12 mt-12">
     <p>Riwayat Hasil Diagnosa : <span class="font-semibold">{{ Auth::user()->fullname }}</span></p>
     <div class="mt-5 shadow-sm border rounded-lg overflow-x-auto">
       @if ($history->isNotEmpty())

@@ -1,7 +1,7 @@
 @extends('main.layout.app')
 @section('title', 'Hasil Diagnosa')
 @section('content')
-<div class="flex items-start space-x-3 mt-8 p-8">
+<div class="md:flex md:items-start md:space-x-3 md:mt-8 md:p-8">
   @include('main.layout.side_info_diagnose', ['totalDiagnosePerUser' => $totalDiagnosePerUser, 'mostFrequentDiagnose' => $mostFrequentDiagnose])
   @if(!empty($naive_bayes_result))
   <div class="w-full">
@@ -11,7 +11,7 @@
         <div class="w-1/2">
           <div class="grid grid-cols-2 gap-2">
             @foreach ($naive_bayes_result as $penyakit => $result)
-            <div class="text-center text-xl">
+            <div class="text-center md:text-xl text-sm">
               <p class="text-slate-600">{{ $penyakit }}</p>
             </div>
             @php
@@ -25,7 +25,7 @@
                 $resultColor = 'text-rose-500';
               }
             @endphp
-            <div class="text-center text-xl">
+            <div class="text-center md:text-xl text-sm">
               <p class="{{ $resultColor }}">{{ number_format($result, 2) }} %</p>
             </div>
             @endforeach
@@ -34,10 +34,10 @@
       </div>
       <div class="solusi_penyakit mt-4">
         <p>Solusi Mengatasi <span class="font-semibold">Penyakit {{ $penyakit_result }}</span> :</p>
-        <p class="text-sm leading- mt-2">{{ $solusi }}</p>
-        <p class="mt-4">Informasi Lengkap Mengenai <a href="{{ route('info.desease', ['jenisPenyakit' => strtolower(str_replace(" ", "", $penyakit_result))]) }}" class="text-blue-500 hover:text-blue-400">{{ $penyakit_result }}</a></p>
+        <p class="md:text-sm text-xs leading- mt-2">{{ $solusi }}</p>
+        <p class="mt-4">Informasi Lengkap Mengenai <a href="{{ route('info.desease', ['jenisPenyakit' => strtolower(str_replace(" ", "-", $penyakit_result))]) }}" class="text-blue-500 hover:text-blue-400">{{ $penyakit_result }}</a></p>
       </div>
-      <div class="mt-5">
+      <div class="mt-5 md:mb-0 mb-5">
         <a href="{{ route('diagnose.history', ['username' => Auth::user()->username]) }}" class="w-fit p-2 rounded-md bg-sky-500 hover:bg-sky-600 text-white flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
