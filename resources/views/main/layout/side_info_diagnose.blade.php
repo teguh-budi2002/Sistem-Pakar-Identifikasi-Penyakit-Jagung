@@ -4,12 +4,12 @@
   <div class="grid grid-cols-3 w-full">
     <div>
       <p class="text-center">Total Diagnosa</p>
-      <p class="text-center text-4xl text-slate-500">{{ $totalDiagnosePerUser }}</p>
+      <p class="text-center md:text-3xl text-sm md:mt-2 mt-4 text-slate-500">{{ $totalDiagnosePerUser }}</p>
     </div>
     <div class="h-20 border-l border-1 border-slate-400 mx-auto"></div>
     <div>
-      <p class="text-center">Diagnsoa Terbanyak</p>
-      <p class="text-3xl text-center">{{ !empty($mostFrequentDiagnose) ? $mostFrequentDiagnose->hasil_penyakit : 'Belum Ada' }}</p>
+      <p class="text-center md:whitespace-normal whitespace-nowrap">Diagnsoa Terbanyak</p>
+      <p class="md:text-3xl text-sm text-center md:mt-2 mt-4">{{ !empty($mostFrequentDiagnose) ? $mostFrequentDiagnose->hasil_penyakit : 'Belum Ada' }}</p>
     </div>
   </div>
 </div>

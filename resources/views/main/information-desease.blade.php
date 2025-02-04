@@ -7,9 +7,9 @@
     <img src="{{ asset('images/penyakit/' . $data['img_penyakit']) }}" class="w-auto max-h-96" alt="{{ $data['img_source'] }}">
     <p class="md:text-sm text-xs md:text-left text-center text-slate-600 font-semibold mt-2">Sumber: <span class="text-slate-400 font-normal">{{ $data['img_source'] }}</span></p>
   </div>
-  <p class="text-center mt-5 text-4xl font-bold text-slate-600">Informasi Mengenai Penyakit {{ $data['name_of_penyakit'] }}</p>
+  <p class="text-center mt-5 md:text-4xl text-xl font-bold text-slate-600">Informasi Mengenai Penyakit {{ $data['name_of_penyakit'] }}</p>
   <div class="md:px-10 px-6 mt-5 mb-5">
-    <p class="leading-relaxed indent-7">
+    <p class="leading-relaxed indent-7 md:text-base text-sm">
       {!! nl2br(e($data['description'])) !!}
     </p>
   </div>

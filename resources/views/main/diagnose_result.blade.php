@@ -1,12 +1,12 @@
 @extends('main.layout.app')
 @section('title', 'Hasil Diagnosa')
 @section('content')
-<div class="md:flex md:items-start md:space-x-3 md:mt-8 md:p-8">
+<div class="md:flex md:items-start md:space-x-3 md:mt-8 md:p-8 p-4">
   @include('main.layout.side_info_diagnose', ['totalDiagnosePerUser' => $totalDiagnosePerUser, 'mostFrequentDiagnose' => $mostFrequentDiagnose])
   @if(!empty($naive_bayes_result))
   <div class="w-full">
     <div class="p-2 outline-1 outline outline-slate-200">
-      <p class="text-center text-2xl uppercase text-slate-600">Hasil Diagnosa</p>
+      <p class="text-center text-2xl md:mt-0 mt-5 uppercase text-slate-600">Hasil Diagnosa</p>
       <div class="flex justify-center mt-5">
         <div class="w-1/2">
           <div class="grid grid-cols-2 gap-2">

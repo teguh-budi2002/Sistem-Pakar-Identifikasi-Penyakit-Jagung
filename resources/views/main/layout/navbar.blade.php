@@ -9,7 +9,7 @@
         @if (Auth::check())
         <li><a href="{{ route('diagnose.index') }}" class="text-sm hover:text-slate-700 {{ Request::is('diagnosa-penyakit') ? 'text-slate-700' : 'text-slate-400' }}">Diagnosa Penyakit</a></li>
         @endif
-        <li><a href="{{ route('about.us') }}" class="text-slate-400 text-sm hover:text-slate-700">Tentang Kami</a></li>
+        {{-- <li><a href="{{ route('about.us') }}" class="text-slate-400 text-sm hover:text-slate-700">Tentang Kami</a></li> --}}
       </ul>
     </div>
     <div class="button_login_register flex items-center justify-end space-x-3">

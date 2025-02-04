@@ -33,16 +33,9 @@
   </div>
   <div class="flex-1 flex items-center justify-center md:h-screen h-full">
     <div
-      class="w-full max-w-md space-y-8 mb-10 px-2 bg-white text-gray-600 sm:px-0"
+      class="w-full max-w-md space-y-8 mb-10 px-4 bg-white text-gray-600 sm:px-0"
     >
       <div>
-        <div class="flex justify-center">
-          <img
-            src="{{ asset('images/logo/LOGO_Only.png') }}"
-            width="160"
-            class="lg:hidden"
-          />
-        </div>
         <div class="mt-5 space-y-2">
           <h3 class="text-gray-800 text-2xl font-bold sm:text-3xl">
             Daftar
@@ -132,9 +125,11 @@
             class="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
           />
         </div>
-        <button class="w-full px-4 py-2 md:mb-0 mb-10 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
-          DAFTAR
-        </button>
+        <div class="md:text-start text-center">
+          <button class="md:w-full w-1/2 px-4 py-2 md:mb-0 mb-10 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
+            DAFTAR
+          </button>
+        </div>
       </form>
     </div>
   </div>

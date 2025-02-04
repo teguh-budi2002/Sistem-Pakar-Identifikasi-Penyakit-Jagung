@@ -7,7 +7,7 @@
     <p>{{ $message }}</p>
 </div>
 @endif
-<div class="md:flex md:items-start md:space-x-3 md:mt-8 md:p-8">
+<div class="md:flex md:items-start md:space-x-3 md:mt-8 md:p-8 p-4">
   @include('main.layout.side_info_diagnose', ['totalDiagnosePerUser' => $totalDiagnosePerUser, 'mostFrequentDiagnose' => $mostFrequentDiagnose])
   <div class="w-full">
     <div class="grid grid-cols-3 gap-3 p-2 outline-1 outline outline-slate-200">
