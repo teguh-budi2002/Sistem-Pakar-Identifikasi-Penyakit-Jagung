@@ -3,7 +3,7 @@
 @section('content')
 <div class="w-full h-full">
 @if (!empty($data))
-  <div class="flex flex-col items-center justify-centestart mt-12 md:mx-0 mx-10">
+  <div class="flex flex-col items-center justify-center mt-12 md:mx-0 mx-10">
     <img src="{{ asset('images/penyakit/' . $data['img_penyakit']) }}" class="w-auto max-h-96" alt="{{ $data['img_source'] }}">
     <p class="md:text-sm text-xs md:text-left text-center text-slate-600 font-semibold mt-2">Sumber: <span class="text-slate-400 font-normal">{{ $data['img_source'] }}</span></p>
   </div>
