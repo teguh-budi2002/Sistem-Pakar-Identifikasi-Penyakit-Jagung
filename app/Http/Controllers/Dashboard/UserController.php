@@ -15,6 +15,9 @@ class UserController extends Controller
         if ($user->role_user_id === 1) {
             return redirect()->back()->with('error-delete-pengguna', 'User Admin Tidak Dapat Dihapus');   
         } else {
+            if ($user->diagnoseHistory()->exists()) {
+                $user->diagnoseHistory()->delete();
+            }
             $user->delete();
             return redirect()->back()->with('success-delete-pengguna', 'User berhasil dihapus');
         }

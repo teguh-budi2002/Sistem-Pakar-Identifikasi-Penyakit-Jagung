@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(RoleUser::class, 'role_user_id', 'id');
     }
+
+    public function diagnoseHistory()
+    {
+        return $this->hasMany(RiwayatHasilDiagnosa::class, 'user_id', 'id');
+    }
 }
